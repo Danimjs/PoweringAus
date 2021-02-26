@@ -1,0 +1,100 @@
+{
+  "type":"FeatureCollection",
+  "features":[
+{
+        "type": "Feature",
+        "properties": {
+           "capacity": 25,
+           "type2": "battery_discharging",
+           "type": "Storage",
+           "site": "Lake Bonney Bessl",
+           "state": "SA",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              140.3846721,
+              -37.7387871
+           ]
+        }
+     },
+           {
+        "type": "Feature",
+        "properties": {
+           "capacity": 220,
+           "type2": "battery_charging",
+           "type": "Storage",
+           "site": "Hornsdale Power Reserve",
+           "state": "SA",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              138.521914,
+              -33.085519
+           ]
+        }
+     },
+      {
+        "type": "Feature",
+        "properties": {
+           "capacity": 60,
+           "type2": "battery_charging",
+           "type": "Storage",
+           "site": "Gannawarra Battery",
+           "state": "VIC",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              143.779462,
+              -35.735056
+           ]
+        }
+     },
+      {
+        "type": "Feature",
+        "properties": {
+           "capacity": 60,
+           "type2": "battery_charging",
+           "type": "Storage",
+           "site": "Ballarat Battery",
+           "state": "VIC",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              143.852741,
+              -37.567452
+           ]
+        }
+     },
+     {
+        "type": "Feature",
+        "properties": {
+           "capacity": 60,
+           "type2": "battery_charging",
+           "type": "Storage",
+           "site": "Dalrymple North Battery",
+           "state": "SA",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              137.758114,
+              -34.888446
+           ]
+        }
+     }
+]
+}
