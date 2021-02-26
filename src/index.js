@@ -7,8 +7,10 @@ import StoryPanel from './StoryPanel.js'
 //import * as d3 from 'd3'
 import dataCoal from './Data/facilities_coal.json'
 import dataSolar from './Data/postcode_solar.json'
-import currentData from "./Data/facility_registry.json"
-import MapFunctions from './MapFunctions';
+import currentData from './Data/facility_registry.json'
+import MapFunctions from './Components/MapVisualization'
+import NavMenu from './Components/NavMenu.js'
+import NavMenuTypeItem from './Components/NavMenuTypeItem.js'
 import sectiondata from './narrative.json'
 import ScrollIntoView from 'react-scroll-into-view'
 import Stackedbarchart from './stacked-bar.js'
