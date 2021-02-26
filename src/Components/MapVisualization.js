@@ -50,26 +50,17 @@ export default class MapVisualization extends Component {
             // const filterType = ['!=', ['string', ['get', 'technology']], 'Battery (Discharging)'];
             var coalData = this.props.coalData;//geojson.parse(data, {Point: ['latitude','longitude']})
             var solarData = this.props.solarData;
-            var hydroData = this.props.hydroData;
-            var storageData = this.props.storageData;
-            var windData = this.props.windData;
-            var otherData = this.props.otherData;
+            var currentData = this.props.currentData;
             //  console.log(geojsondata)
             this.map.on('load', () => {
 
-                this.map.addSource('facilitiy_coal', {
+                this.map.addSource('facility_Coal', {
                     type: 'geojson',
                     data: coalData,
                     cluster: false
                 })
-        
-              this.map.addSource('facilitiy_hydro', {
-                    type: 'geojson',
-                    data: hydroData,
-                    cluster: false
-                })
-              
-                this.map.addSource('facility_solar', {
+
+                this.map.addSource('postcode_Solar', {
                     type: 'geojson',
                     data: solarData,
                     cluster: false,
@@ -77,25 +68,15 @@ export default class MapVisualization extends Component {
                     clusterRadius: 50
                 })
 
-                this.map.addSource('otherData', {
+                this.map.addSource('currentFacilities', {
                     type: 'geojson',
-                    data: otherData
-                })
-              
-                this.map.addSource('facility_storage', {
-                    type: 'geojson',
-                    data: storageData
-                })
-              
-                this.map.addSource('facility_wind', {
-                    type: 'geojson',
-                    data: windData
+                    data: currentData
                 })
               
                 this.map.addLayer({
                     id: 'unclusters_solar',
                     type: 'circle',
-                    source: 'facility_solar',
+                    source: 'postcode_Solar',
                     paint: {
                         
                         'circle-color': [
@@ -130,106 +111,10 @@ export default class MapVisualization extends Component {
 
                     'filter': ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]]
                 });
-               this.map.addLayer({
-                    id: 'unclusters_hydro',
-                    type: 'circle',
-                    source: 'facility_hydro',
-                    paint: {
-                        
-                        'circle-color':  "#43cfef",
-                        'circle-opacity': 0.5,
-                        'circle-stroke-color': "#43cfef",
-                        'circle-stroke-opacity': 1,
-                        'circle-stroke-width': 0.5,
-                        'circle-radius':  {
-                            property: 'capacity',
-                    //  //      type: 'exponential',
-                    //        base: 2,
-                            stops: [
-                                [{zoom: 3, value: 1}, 1],
-                                [{zoom: 3, value: 18}, 10],
-                                [{zoom: 4.5, value: 1}, 3],
-                                [{zoom: 4.5, value: 18}, 15],
-                                [{zoom: 7, value: 1}, 5],
-                                [{zoom: 7, value: 18}, 20],
-                                [{zoom: 10, value: 1}, 10],
-                                [{zoom: 10, value: 18}, 25]
-                       
-                            ]
-                        }
-                        
-                    },
-
-                    'filter': ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]]
-                });
-                             this.map.addLayer({
-                    id: 'unclusters_storage',
-                    type: 'circle',
-                    source: 'facility_storage',
-                    paint: {
-                        
-                        'circle-color':  "#4e80e5",
-                        'circle-opacity': 0.5,
-                        'circle-stroke-color': "#4e80e5",
-                        'circle-stroke-opacity': 1,
-                        'circle-stroke-width': 0.5,
-                        'circle-radius':  {
-                            property: 'capacity',
-                    //  //      type: 'exponential',
-                    //        base: 2,
-                            stops: [
-                                [{zoom: 3, value: 1}, 1],
-                                [{zoom: 3, value: 18}, 10],
-                                [{zoom: 4.5, value: 1}, 3],
-                                [{zoom: 4.5, value: 18}, 15],
-                                [{zoom: 7, value: 1}, 5],
-                                [{zoom: 7, value: 18}, 20],
-                                [{zoom: 10, value: 1}, 10],
-                                [{zoom: 10, value: 18}, 25]
-                       
-                            ]
-                        }
-                        
-                    },
-
-                    'filter': ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]]
-                });
                 this.map.addLayer({
-                    id: 'unclusters_wind',
+                    id: 'allpowerplants',
                     type: 'circle',
-                    source: 'facility_wind',
-                    paint: {
-                        
-                        'circle-color':  "#66e326",
-                        'circle-opacity': 0.5,
-                        'circle-stroke-color': "#66e326",
-                        'circle-stroke-opacity': 1,
-                        'circle-stroke-width': 0.5,
-                        'circle-radius':  {
-                            property: 'capacity',
-                    //  //      type: 'exponential',
-                    //        base: 2,
-                            stops: [
-                                [{zoom: 3, value: 1}, 1],
-                                [{zoom: 3, value: 18}, 10],
-                                [{zoom: 4.5, value: 1}, 3],
-                                [{zoom: 4.5, value: 18}, 15],
-                                [{zoom: 7, value: 1}, 5],
-                                [{zoom: 7, value: 18}, 20],
-                                [{zoom: 10, value: 1}, 10],
-                                [{zoom: 10, value: 18}, 25]
-                       
-                            ]
-                        }
-                        
-                    },
-
-                    'filter': ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]]
-                });
-                this.map.addLayer({
-                    id: 'otherData',
-                    type: 'circle',
-                    source:"otherData",
+                    source:"currentFacilities",
                     paint: {
                     'circle-radius': {
                         property: 'capacity',
@@ -249,28 +134,28 @@ export default class MapVisualization extends Component {
                     'circle-color': [
                         'match',
                         ['get', 'type'],
-                        "Coal", "#91908d",
-                        "Storage", "#4e80e5",
-                        "Solar", "#ffc83e",
-                        "Solar2", "#ffa93e",
-                        "Hydro", "#43cfef",
-                        "Wind", "#66e326"
-                        "Gas", "#6b4b06",
-                        "Waste", "#ea545c",
+                        "Coal": "#91908d",
+                        "Storage": "#4e80e5",
+                        "Solar": "#ffc83e",
+                        "Solar2": "#ffa93e",
+                        "Hydro": "#43cfef",
+                        "Wind": "#66e326",
+                        "Waste": "#ea545c",
+                        "Gas": "#6b4b06"
                         /* other */ '#ccc'
                     ],
                     'circle-opacity': 0.3,
                     'circle-stroke-color':  [
                         'match',
                         ['get', 'type'],
-                        "Coal", "#91908d",
-                        "Storage", "#4e80e5",
-                        "Solar", "#ffc83e",
-                        "Solar2", "#ffa93e",
-                        "Hydro", "#43cfef",
-                        "Wind", "#66e326"
-                        "Gas", "#6b4b06",
-                        "Waste", "#ea545c",
+                        "Coal": "#91908d",
+                        "Storage": "#4e80e5",
+                        "Solar": "#ffc83e",
+                        "Solar2": "#ffa93e",
+                        "Hydro": "#43cfef",
+                        "Wind": "#66e326",
+                        "Waste": "#ea545c",
+                        "Gas": "#6b4b06"
                          /*other,*/  '#ccc' 
                     ],
                         'circle-stroke-opacity': 1,
@@ -282,7 +167,7 @@ export default class MapVisualization extends Component {
                 this.map.addLayer({
                     id: 'unclusters_coal',
                     type: 'circle',
-                    source: 'facility_coal',
+                    source: 'facility_Coal',
                     paint: {
                         'circle-radius': {
                             property: 'capacity',
@@ -301,9 +186,9 @@ export default class MapVisualization extends Component {
                                 [{zoom: 15, value: 2500}, 60]
                                 ]
                         },
-                        'circle-color':  "#91908d",
+                        'circle-color':  "#404040",
                         'circle-opacity': 0.3,
-                        'circle-stroke-color': "#91908d",
+                        'circle-stroke-color': "#404040",
                         'circle-stroke-opacity': 1,
                         'circle-stroke-width': 0.5
                     },
@@ -313,7 +198,7 @@ export default class MapVisualization extends Component {
                 this.map.addLayer({
                     id: 'clusters_solar',
                     type: 'circle',
-                    source: 'facility_solar',
+                    source: 'postcode_Solar',
                     filter: ["all", [ 'has', 'point_count'],  this.m_filterStartYear, this.m_filterEndYear, this.m_filterType ],
                     
                     paint: {
@@ -409,7 +294,8 @@ export default class MapVisualization extends Component {
                 self.map.getCanvas().style.cursor = '';
                 self.drawPopup(false)
             });
-            this.map.on('mouseenter', 'unclusters_storage', function (e) {
+
+            this.map.on('mouseenter', 'allpowerplants', function (e) {
                 // Change the cursor style as a UI indicator.
                 //    console.log("enter: " + e.features[0].properties.site)
                 tooltip.setLngLat(e.lngLat);
@@ -419,7 +305,7 @@ export default class MapVisualization extends Component {
 
             })
 
-            this.map.on('mousemove', 'unclusters_storage', function (e) {
+            this.map.on('mousemove', 'allpowerplants', function (e) {
                 tooltip.setLngLat(e.lngLat);
                 self.grump = e.features[0]
                 self.map.getCanvas().style.cursor = 'pointer';
@@ -427,77 +313,7 @@ export default class MapVisualization extends Component {
 
             })
 
-            this.map.on('mouseleave', 'unclusters_storage', function (e) {
-
-                self.map.getCanvas().style.cursor = '';
-                self.drawPopup(false)
-            });
-                      this.map.on('mouseenter', 'unclusters_hydro', function (e) {
-                // Change the cursor style as a UI indicator.
-                //    console.log("enter: " + e.features[0].properties.site)
-                tooltip.setLngLat(e.lngLat);
-                self.grump = e.features[0]
-                self.map.getCanvas().style.cursor = 'pointer';
-                self.drawPopup(true)
-
-            })
-
-            this.map.on('mousemove', 'unclusters_hydro', function (e) {
-                tooltip.setLngLat(e.lngLat);
-                self.grump = e.features[0]
-                self.map.getCanvas().style.cursor = 'pointer';
-                self.drawPopup(true)
-
-            })
-
-            this.map.on('mouseleave', 'unclusters_hydro', function (e) {
-
-                self.map.getCanvas().style.cursor = '';
-                self.drawPopup(false)
-            });
-                      this.map.on('mouseenter', 'unclusters_wind', function (e) {
-                // Change the cursor style as a UI indicator.
-                //    console.log("enter: " + e.features[0].properties.site)
-                tooltip.setLngLat(e.lngLat);
-                self.grump = e.features[0]
-                self.map.getCanvas().style.cursor = 'pointer';
-                self.drawPopup(true)
-
-            })
-
-            this.map.on('mousemove', 'unclusters_wind', function (e) {
-                tooltip.setLngLat(e.lngLat);
-                self.grump = e.features[0]
-                self.map.getCanvas().style.cursor = 'pointer';
-                self.drawPopup(true)
-
-            })
-
-            this.map.on('mouseleave', 'unclusters_wind', function (e) {
-
-                self.map.getCanvas().style.cursor = '';
-                self.drawPopup(false)
-            });
-          
-            this.map.on('mouseenter', 'otherData', function (e) {
-                // Change the cursor style as a UI indicator.
-                //    console.log("enter: " + e.features[0].properties.site)
-                tooltip.setLngLat(e.lngLat);
-                self.grump = e.features[0]
-                self.map.getCanvas().style.cursor = 'pointer';
-                self.drawPopup(true)
-
-            })
-
-            this.map.on('mousemove', 'otherData', function (e) {
-                tooltip.setLngLat(e.lngLat);
-                self.grump = e.features[0]
-                self.map.getCanvas().style.cursor = 'pointer';
-                self.drawPopup(true)
-
-            })
-
-            this.map.on('mouseleave', 'otherData', function (e) {
+            this.map.on('mouseleave', 'allpowerplants', function (e) {
 
                 self.map.getCanvas().style.cursor = '';
                 self.drawPopup(false)
@@ -604,13 +420,11 @@ export default class MapVisualization extends Component {
     updateFilters() {
         if (this.map.isStyleLoaded()) {
             // map.setFilter('powerplants', ['all', filterOperator, filterType, filterStartYear, filterEndYear, filterSite, filterCapacity]);
-            this.map.setFilter('unclusters_coal', ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]])
+            this.map.setFilter('unclusters_coal', ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]] )
+           
             this.map.setFilter('unclusters_solar', ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]])
-            this.map.setFilter('unclusters_hydro', ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]])
-            this.map.setFilter('unclusters_wind', ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]])
-            this.map.setFilter('unclusters_storage', ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType, ['!', ['has', 'point_count']]])
             this.map.setFilter('clusters_solar', ['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType,['has','point_count']])
-            this.map.setFilter('otherData',['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType])
+            this.map.setFilter('allpowerplants',['all', this.m_filterStartYear, this.m_filterEndYear, this.m_filterType])
         }
     }
 
@@ -638,7 +452,7 @@ export default class MapVisualization extends Component {
     }
 
 }
-const PopupContent = ({ color, name, capacity, open, decom, type2 }) => ( /*Popup content hovering over facility*/
+const PopupContent = ({ color, name, capacity, open, decom, type2 }) => (
 
     <div className={`colour-key popupDiv`}>
         <h3 className="popupHeading" style={{ color: color }}> {name}</h3>
