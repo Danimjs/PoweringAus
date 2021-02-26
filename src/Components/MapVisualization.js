@@ -87,7 +87,7 @@ export default class MapVisualization extends Component {
 
                         ], //"#ffc83e",
                         'circle-opacity': 0.5,
-                        'circle-stroke-color': "#ffc83e",
+                        'circle-stroke-color': "#ffa93e",
                         'circle-stroke-opacity': 1,
                         'circle-stroke-width': 0.5,
                         'circle-radius':  {
@@ -186,9 +186,9 @@ export default class MapVisualization extends Component {
                                 [{zoom: 15, value: 2500}, 60]
                                 ]
                         },
-                        'circle-color':  "#404040",
+                        'circle-color':  "#91908d",
                         'circle-opacity': 0.3,
-                        'circle-stroke-color': "#404040",
+                        'circle-stroke-color': "#91908d",
                         'circle-stroke-opacity': 1,
                         'circle-stroke-width': 0.5
                     },
