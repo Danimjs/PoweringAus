@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import './css/responsive.css'
 //import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-import StoryPanel from './StoryPanel.js'
+import StoryPanel from './Components/StoryPanel.js'
 //import * as d3 from 'd3'
 import dataCoal from './Data/facilities_coal.json'
 import dataSolar from './Data/postcode_solar.json'
@@ -14,6 +14,7 @@ import NavMenuTypeItem from './Components/NavMenuTypeItem.js'
 import sectiondata from './narrative.json'
 import ScrollIntoView from 'react-scroll-into-view'
 import Stackedbarchart from './stacked-bar.js'
+import ScrollyTeller from './Components/ScrollyTeller.js'
 
 import *  as d3 from 'd3'
 import stackedData from './Data/yearDistribution.csv'
