@@ -207,11 +207,11 @@ export default class MapVisualization extends Component {
                         'circle-radius': [
                             'step',
                             ['get', 'point_count'],
-                            2,
+                            1,
+                            25,
+                            10,
                             50,
-                            20,
-                            100,
-                            50
+                            25
                         ]
                     }
                 });
