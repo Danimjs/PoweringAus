@@ -9,7 +9,7 @@ import dataCoal from './Data/facilities_coal.json'
 import dataSolar from './Data/postcode_solar.json'
 import currentData from './Data/facility_registry.json'
 import MapFunctions from './Components/MapVisualization'
-import NavMenu from './Components/NavMenu.js'
+import NavMenuItem from './Components/NavMenu.js'
 import NavMenuTypeItem from './Components/NavMenuTypeItem.js'
 import sectiondata from './narrative.json'
 import ScrollIntoView from 'react-scroll-into-view'
@@ -410,20 +410,6 @@ class ScrollyTeller extends Component {
     }
 }
 
-
-class NavMenuTypeItem extends Component {
-    handleClick = () => {
-        this.props.onClickA(this.props.type);
-    }
-
-    render() {
-        return (
-            <div onClick={this.handleClick} className={`navItem navItemColor ${this.props.active ? "navItemActive_" + this.props.type : ""}`}> {this.props.type} </div>
-
-        );
-    }
-}
-
 class StackedBar extends Component {
     render() {
         return (
@@ -433,12 +419,4 @@ class StackedBar extends Component {
         )
     }
 }
-const NavMenuItem = ({ id, name, activeId }) => (
-
-    <ScrollIntoView
-        selector={`#section${name}_id_p0`}
-        alignToTop={false} >
-        <div className={`navItem ${id === activeId ? "navItemActive" : ""} `}> {name} </div>
-    </ScrollIntoView>
-)
 ReactDOM.render(<ScrollyTeller />, document.getElementById('root'));
