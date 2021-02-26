@@ -9,7 +9,7 @@ import dataCoal from './Data/facilities_coal.json'
 import dataSolar from './Data/postcode_solar.json'
 import currentData from "./Data/facility_registry.json"
 import MapFunctions from './MapFunctions';
-import sectiondata from './sections.json'
+import sectiondata from './narrative.json'
 import ScrollIntoView from 'react-scroll-into-view'
 import Stackedbarchart from './stacked-bar.js'
 
