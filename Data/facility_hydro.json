@@ -1102,8 +1102,7 @@
               -36.594993
            ]
         }
-     },  
-        
+     },    
       {
         "type": "Feature",
         "properties": {
@@ -1122,6 +1121,63 @@
               -33.883064
            ]
         }
-     }
+     },
+         {
+        "type": "Feature",
+        "properties": {
+           "capacity": 480,
+           "type2": "pumps",
+           "type": "Pumps",
+           "site": "Shoalhaven",
+           "state": "NSW",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              150.4667001,
+              -34.73308464
+           ]
+        }
+     },
+      {
+        "type": "Feature",
+        "properties": {
+           "capacity": 2100,
+           "type2": "pumps",
+           "type": "Pumps",
+           "site": "Tumut 3",
+           "state": "NSW",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              148.2926435,
+              -35.61081711
+           ]
+        }
+     },
+             {
+        "type": "Feature",
+        "properties": {
+           "capacity": 70,
+           "type2": "pumps",
+           "type": "Pumps",
+           "site": "Jindabyne Pump",
+           "state": "NSW",
+           "yearStart": 2010,
+           "yearEnd": 9999
+        },
+        "geometry": {
+           "type": "Point",
+           "coordinates": [
+              148.63057,
+              -36.434918
+           ]
+        }
+     }        
 ]
 }
